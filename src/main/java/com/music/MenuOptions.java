@@ -36,7 +36,8 @@ public class MenuOptions {
         int index = random.nextInt(musicians.size());
         var musician = musicians.get(index);
         MANAGE_BANDS.removeMusicianFromBrand(musician);
-        MANAGE_BANDS.addMusicianToBrand(musician);
+        index = random.nextInt(musicians.size());
+        MANAGE_BANDS.addMusicianToBrand(musicians.get(index));
     }
 
     public void exit() {

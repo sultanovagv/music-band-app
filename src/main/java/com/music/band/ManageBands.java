@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 @Data
@@ -17,7 +15,6 @@ import java.util.Random;
 public class ManageBands {
 
     private static final List<Band> BANDS = Collections.synchronizedList(new ArrayList<>());
-    private static final Map<Integer, List<List<String>>> LOGS_HISTORY = Collections.synchronizedMap(new HashMap<>());
     private static final Random RANDOM = new Random();
 
     public void addBand(Band band) {
@@ -37,7 +34,7 @@ public class ManageBands {
             var musicians = new HashSet<>(band.getMusicians());
             musicians.add(musician);
             var log = musician.getName() + "  joined to " + band.getName();
-            printAndSaveLog(band.getCode(), log);
+            System.out.println(log);
         }
     }
 
@@ -50,14 +47,8 @@ public class ManageBands {
             var musicians = new HashSet<>(band.getMusicians());
             musicians.remove(musician);
             var log = musician.getName() + "  left  " + band.getName();
-            printAndSaveLog(band.getCode(), log);
+            System.out.println(log);
         }
     }
 
-    private static void printAndSaveLog(Integer bandCode, String log) {
-        System.out.println(log);
-        var value = LOGS_HISTORY.getOrDefault(bandCode, new ArrayList<>());
-        value.add(List.of(log));
-        LOGS_HISTORY.put(bandCode, value);
-    }
 }
