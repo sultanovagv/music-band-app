@@ -25,30 +25,37 @@ public class BandManager {
         return BANDS;
     }
 
-    public void addMusicianToBrand(Musician musician) {
-        int index = RANDOM.nextInt(BANDS.size());
-        var band = BANDS.get(index);
-        var isMusicianInBand = band.getMusicians().stream()
+    public void addMusicianToRandomBand(Musician musician) {
+        var isMusicianBoundToAnyBand = BANDS.stream()
+                .flatMap(band -> band.getMusicians().stream())
                 .anyMatch(data -> data.getCode() == musician.getCode());
-        if (!isMusicianInBand) {
+        if (!isMusicianBoundToAnyBand) {
+            var random = new Random();
+            int index = random.nextInt(BANDS.size());
+            var band = BANDS.get(index);
             var musicians = new HashSet<>(band.getMusicians());
             musicians.add(musician);
+            band.setMusicians(musicians);
             var log = musician.getName() + "  joined to " + band.getName();
             System.out.println(log);
         }
     }
 
-    public void removeMusicianFromBrand(Musician musician) {
-        int index = RANDOM.nextInt(BANDS.size());
-        var band = BANDS.get(index);
-        var isMusicianInBand = band.getMusicians().stream()
-                .anyMatch(data -> data.getCode() == musician.getCode());
-        if (!isMusicianInBand) {
-            var musicians = new HashSet<>(band.getMusicians());
+    public Musician removeRandomMusicianFromBand(Band band) {
+        Musician musician = null;
+        var musicians = band.getMusicians();
+        if (musicians.size() > 0) {
+            var random = new Random();
+            var bandMusicians = musicians.toArray(new Musician[0]);
+            int index = random.nextInt(bandMusicians.length);
+            musician = bandMusicians[index];
+            musicians = new HashSet<>(musicians);
             musicians.remove(musician);
+            band.setMusicians(musicians);
             var log = musician.getName() + "  left  " + band.getName();
             System.out.println(log);
         }
+        return musician;
     }
 
 }
