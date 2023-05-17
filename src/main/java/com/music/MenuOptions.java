@@ -1,10 +1,10 @@
 package com.music;
 
 import com.music.band.Band;
-import com.music.band.ManageBands;
+import com.music.band.BandManager;
 import com.music.instrument.Guitar;
 import com.music.instrument.Piano;
-import com.music.musician.ManageMusicians;
+import com.music.musician.MusicianManager;
 import com.music.musician.Musician;
 
 import java.util.HashSet;
@@ -12,8 +12,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class MenuOptions {
-    private static final ManageBands MANAGE_BANDS = new ManageBands();
-    private static final ManageMusicians MANAGE_MUSICIANS = new ManageMusicians();
+    private static final BandManager MANAGE_BANDS = new BandManager();
+    private static final MusicianManager MANAGE_MUSICIANS = new MusicianManager();
 
     static {
         var guitar = Guitar.builder().code(1).name("guitar").numberOfStrings(6).stringSize(0.8).build();

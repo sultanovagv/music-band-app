@@ -12,7 +12,7 @@ import java.util.Random;
 
 @Data
 @NoArgsConstructor
-public class ManageBands {
+public class BandManager {
 
     private static final List<Band> BANDS = Collections.synchronizedList(new ArrayList<>());
     private static final Random RANDOM = new Random();

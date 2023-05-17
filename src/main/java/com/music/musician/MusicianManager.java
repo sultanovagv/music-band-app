@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class ManageMusicians {
+public class MusicianManager {
 
     private static final List<Musician> MUSICIANS = Collections.synchronizedList(new ArrayList<>());
 
