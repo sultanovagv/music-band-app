@@ -37,7 +37,7 @@ public class MenuOptions {
     public void playOneNight() {
         var musiciansWithoutBand = new HashSet<Musician>();
         var bands = BAND_MANAGER.listBands();
-        bands.forEach(band -> {
+        bands.forEach(band -> {   // removing random musician for each band
             var musician = BAND_MANAGER.removeRandomMusicianFromBand(band);
             if (musician != null) {
                 musiciansWithoutBand.add(musician);
@@ -48,11 +48,11 @@ public class MenuOptions {
                 .flatMap(band -> band.getMusicians().stream())
                 .collect(Collectors.toList());
 
-        MUSICIAN_MANAGER.listMusicians().stream()
+        MUSICIAN_MANAGER.listMusicians().stream() //checking different values in order to find  musicians who are not bind to any band
                 .filter(musician -> !bandMusicians.contains(musician))
                 .forEach(musiciansWithoutBand::add);
 
-        musiciansWithoutBand.forEach(BAND_MANAGER::addMusicianToRandomBand);
+        musiciansWithoutBand.forEach(BAND_MANAGER::addMusicianToRandomBand);  // adding musicians to bands who are not bind to any band
     }
 
     public void exit() {
