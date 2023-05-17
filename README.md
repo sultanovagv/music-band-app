@@ -41,7 +41,7 @@ Write a console application, which provides the following menu options in its fi
 
 # Solution
 
-There are several instruments in the description. So I created the base Instrument class and subclass for each instrument to use my inheritance.
+There are several instruments in the description. So I created the base Instrument class and subclass for each instrument to use inheritance.
 In this assignment I tried to focus on decoupling. 
 If you look at the Band class, you'll see that the Manufacturer and Musician classes are separated.
 also created the ManageBands and ManageMusicians classes to manage bands and musicians.
