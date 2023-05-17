@@ -48,11 +48,11 @@ public class MenuOptions {
                 .flatMap(band -> band.getMusicians().stream())
                 .collect(Collectors.toList());
 
-        MUSICIAN_MANAGER.listMusicians().stream() //checking different values in order to find  musicians who are not bind to any band
+        MUSICIAN_MANAGER.listMusicians().stream() //checking different values in order to find musicians who are not bind to any band
                 .filter(musician -> !bandMusicians.contains(musician))
                 .forEach(musiciansWithoutBand::add);
 
-        musiciansWithoutBand.forEach(BAND_MANAGER::addMusicianToRandomBand);  // adding musicians to bands who are not bind to any band
+        musiciansWithoutBand.forEach(BAND_MANAGER::addMusicianToRandomBand);  // adding musicians to random bands who are not bind to any band
     }
 
     public void exit() {
