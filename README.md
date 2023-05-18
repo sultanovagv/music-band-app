@@ -41,10 +41,10 @@ Write a console application, which provides the following menu options in its fi
 
 # Solution
 
-There are several instruments in the description. So I created the base Instrument class and subclass for each instrument to use inheritance.
+There are several instruments in the description. So I created the base Instrument class and subclass for each instrument to use polymorphism.
 In this assignment I tried to focus on decoupling. 
 If you look at the Band class, you'll see that the Manufacturer and Musician classes are separated.
 also created the BandManager and MusicianManager classes to manage bands and musicians.
 these classes help to use CRUD operations (like a service layer).
 MenuOptions class might be helpful to use BandManager and MusicianManager at the same time.
-so all requests are passing through the MenuOption class.
+so all requests are passing through the MenuOptions class.
